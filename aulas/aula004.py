@@ -1,10 +1,10 @@
 nome = input('Digite seu nome: ')
 idd = int(input('Digite sua idade: '))
 sal = float(input('Digite seu salário: '))
-aumento = sal + (sal/5)
+aumento = sal + (sal*0.2)
 
 message = (f'O seu nome, é: {nome}.\n'
            f'Sua idade, é: {idd}.\n'
            f'E o seu salário, é: {sal}.\n'
-           f'Após o aumento de 20%, seu salário agora é de: ')
+           f'Após o aumento de 20%, seu salário agora é de: {aumento}')
 print(message)
