@@ -12,13 +12,14 @@ import math
 
 while True:
     a = float(input('Entre com o valor de a: '))
-    b = float(input('Entre com o valor de b: '))
-    c = float(input('Entre com o valor de c: '))
 
     def calcular_raizes():
         if a == 0:
             print('A equação não é do segundo grau.')
-            return
+            quit()
+        
+        b = float(input('Entre com o valor de b: '))
+        c = float(input('Entre com o valor de c: '))
 
         delta = b ** 2 - 4 * a * c
 
