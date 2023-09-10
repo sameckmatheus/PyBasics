@@ -6,9 +6,15 @@ b. Salários até R$ 280,00 (incluindo): aumento de 20%;
 c. Salários entre R$ 280,00 e R$700,00: aumento de 15%;
 d. Salários entre R$ 700,00 e R$ 1500,00: aumento de 10%;
 e. Salários de R$ 1500,00 em diante: aumento de 5%
-Após o aumento ser realizado; informe na tela;
+
+- Após o aumento ser realizado;
+- informe na tela;
 
 a. O salário antes do reajuste;
 b. O percentual de aumento aplicado;
 c. O valor do aumento;
 d. O novo salário, após o aumento."""
+
+while True:
+    ...
+    break
