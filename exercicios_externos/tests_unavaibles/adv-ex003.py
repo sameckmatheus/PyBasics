@@ -15,6 +15,20 @@ b. O percentual de aumento aplicado;
 c. O valor do aumento;
 d. O novo salário, após o aumento."""
 
-while True:
+sal_colaborador = float(input('Informe seu salário atual: '))
+
+if sal_colaborador > 0:
+    if sal_colaborador <= 280:
+        percentual = 20
+        val_aumento = sal_colaborador - percentual
+        sal_liq = sal_colaborador + percentual
+
+        print(f'Seu salário antes do reajuste, era: {sal_colaborador:.2f}\n'
+              f'Seu percentual de aumento aplicado é de {percentual:.1f}%.\n'
+              f'O valor do aumento, foi, de: {val_aumento:.2f}\n'
+              f'Seu novo salário após o reajuste, é: {sal_liq:.2f}.')
+
+    else:
+        pass
+else:
     ...
-    break
