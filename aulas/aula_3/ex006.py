@@ -1,4 +1,6 @@
-numero = int(input('Digite um número: '))
+soma = 0
 for x in range(10):
-    tab = numero * (x + 1)
-    print(tab, end=' ')
+    numero = float(input('Digite um número: '))
+    soma = soma + numero
+m = soma / (x + 1)
+print(m)
