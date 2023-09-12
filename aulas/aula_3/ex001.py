@@ -20,20 +20,3 @@ elif h2 > 12:
         SomaHora += 1
         SomaMinutos = SomaMinutos - 60
         print(f'Saída: {SomaHora} : 0{SomaMinutos}')
-
-"""
-    h1 = 3
-    min1 = 45
-    h2 = 14
-    min2 = 20
-
-    conversao = h2 - 12
-    hformat12 = conversao + h1
-    mins = min1 + min2
-
-    if mins > 60:
-        hformat12 += 1
-        gmin = mins - 60
-
-    print(f'Saída: {hformat12}:0{gmin}')
-"""
