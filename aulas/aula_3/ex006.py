@@ -11,5 +11,4 @@ print(f'{soma}:.0f')
         soma = soma + numero
         m = soma / 10
     print(m)
-
 """
