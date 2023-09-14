@@ -35,7 +35,7 @@ while True:
 
 
     calcular_raizes()
-    continuar = input('Deseja sair?\n'
-                      'Digite q ou Enter para novo cálculo: ')
+    continuar = input('Deseja sair, digite [q]?\n'
+                      'Ou, digite [Enter] para novo cálculo: ')
     if continuar == 'q':
         break
