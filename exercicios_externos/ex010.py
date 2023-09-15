@@ -1,5 +1,5 @@
 """
-cqlcule o valor referente aos impostos elegidos sobre os produtos a seguir, considerando que o imposto corresponde a
+calcule o valor referente aos impostos elegidos sobre os produtos a seguir, considerando que o imposto corresponde a
 10% do valor total do produto:
 - Faca              R$ 10,00;
 - Cafeteira         R$ 200,00;
