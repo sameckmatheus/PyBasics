@@ -1,11 +1,11 @@
 """ Ler 10 valores, calcular e escrever a média aritmética desses valores lidos. (usando While) """
 soma = 0
-reps = 0
+contador = 0
 
-while reps < 11:
-    valor = float(input('Diite um valor: '))
+while contador < 11:
+    valor = float(input('Digite um valor: '))
     soma = soma + valor
-    reps = reps + 1
+    contador = contador + 1
 
-media = soma / reps
+media = soma / contador
 print(f'A média aritmética dos valores iseridos, é: {media:.1f}')
