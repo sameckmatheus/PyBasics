@@ -1,3 +1,3 @@
 n = int(input('Digite um número: '))
 for i in range(1, n + 1):
-    print(str(i) * i, end=' ')
+    print(str(i) * i, end=' \n')
