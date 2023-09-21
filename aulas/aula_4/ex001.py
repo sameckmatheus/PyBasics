@@ -1,4 +1,3 @@
-""" Ler 10 valores, calcular e escrever a média aritmética desses valores lidos. (usando While) """
 soma = 0
 contador = 0
 
