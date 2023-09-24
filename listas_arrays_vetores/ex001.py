@@ -3,8 +3,7 @@
 lista_coisas = []
 
 for i in range(5):
-
     elementos = input('digite algo: ')
-    lista_coisas = elementos
+    lista_coisas.append(elementos)
 
 print(lista_coisas)
