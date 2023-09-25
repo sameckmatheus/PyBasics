@@ -1,7 +1,8 @@
-while True:
-    n1 = float(input('\nDigite a primeira nota: '))
-    n2 = float(input('Digite a segunda nota: '))
+loop = 'S'
 
+while loop == 'S':
+    n1 = float(input('Digite a primeira nota: '))
+    n2 = float(input('Digite a segunda nota: '))
     media = (n1 + n2) / 2
 
     if media < 7:
@@ -15,11 +16,10 @@ while True:
         print(f'Sua média foi ({media}).')
         print('Você foi APROVADO!!!')
 
-    continuar = input(
+    loop = input(
         "\nPressione S para realizar um novo cálculo...\n"
         "Ou, N para encerrar: "
     )
 
-    if continuar in 'Nn':
+    if loop == 'N':
         break
-
