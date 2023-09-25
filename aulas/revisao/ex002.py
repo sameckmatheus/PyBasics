@@ -1,7 +1,7 @@
 loop = 'S'
 
 while loop == 'S':
-    n = int(input(
+    n = float(input(
         'Digite um número: '
     ))
 
@@ -11,7 +11,7 @@ while loop == 'S':
         print(f'O número {n}, é negativo.')
     elif n == 0:
         print('Valor inválido para a questão...')
-        break
+        print('Você deve informar um valor diferente de 0')
 
     loop = input(
         "\nPressione S para realizar uma nova verificação...\n"
