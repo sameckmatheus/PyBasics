@@ -1,4 +1,5 @@
 lista_numeros = []
+
 for _ in range(5):
     elementos = int(input('Digite um número aleatório: '))
     lista_numeros.append(elementos)
