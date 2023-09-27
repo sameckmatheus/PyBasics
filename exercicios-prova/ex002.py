@@ -1,3 +1,8 @@
+"""
+2. Crie um código que leia um número
+diferente de zero e diga se este número
+é positivo ou negativo
+"""
 n = int(input('Digite um número: '))
 if n != 0:
     if n > 0:
