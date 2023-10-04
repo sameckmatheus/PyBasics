@@ -6,6 +6,6 @@
 lista_elementos = []
 
 for elemento in range(5):
-    add_elemento = input('Digite algo: ')
-    lista_elementos = add_elemento
+    add_elemento = int(input('Digite algo: '))
+    lista_elementos = lista_elementos.append(add_elemento)
 print(lista_elementos)
