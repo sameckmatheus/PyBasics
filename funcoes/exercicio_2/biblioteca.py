@@ -49,3 +49,15 @@ def imprimir(n1):
             print(x, end=' ')
         print()
 
+
+def identificador_vogais(texto):
+    espacos = ' '
+    vogais = 0
+    esp_cont = 0
+    for i in texto:
+        if i in 'aAeEiIoOuU':
+            vogais += 1
+        elif i == espacos:
+            esp_cont += 1
+    print(f'Esta frase tem {vogais} vogais.')
+    print(f'e tem {esp_cont} espaços.')
