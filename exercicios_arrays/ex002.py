@@ -1,16 +1,16 @@
 """
-2. Crie um código que leia um número
-diferente de zero e diga se este número
-é positivo ou negativo
+Exercício 02
+
+altere o exercício anterior e mostre na tela,
+ao final, o nome de cada aluno e sua
+respectiva posição no array.
 """
-n = int(input('Digite um número: '))
-if n != 0:
-    if n > 0:
-        mensagem = f'O número {n} é positivo.'
-        print(mensagem)
-    else:
-        mensagem = f'O número {n} é negativo.'
-        print(mensagem)
-elif n == 0:
-    mensagem = f'O número {n} é inválido para a execução do programa.'
-    print(mensagem)
+sala = int(input('Informe o número de alunos na sala: '))
+nomes = [0]*sala
+
+for x in range(sala):
+    alunos = input(f'Informe o nome do {x+1}º aluno(a): ')
+    nomes[x] = alunos
+
+for i in range(sala):
+    print(f'O aluno {nomes[i]}, está na posição {i}.')

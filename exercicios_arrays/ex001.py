@@ -1,10 +1,14 @@
 """
-1. Faça um algoritmo que receba 2
-notas e calcule a média aritmética
+Exercício 01
+
+Perguntar ao usuário quantos alunos tem
+na sala e criar um array, unidimensional
+(Ve0tor) com o nome de todos os alunos da
+sala
 """
-n1 = int(input('Digite um número: '))
-n2 = int(input('Digite um número: '))
-media = (n1 + n2) / 2
-mensagem = (f'Você inseriu os números {n1} e {n2}'
-            f'A média entre eles, é: {media}')
-print(mensagem)
+sala = int(input('Informe o número de alunos na sala: '))
+nomes = []
+
+for x in range(sala):
+    alunos = nomes.append(input(f'Informe o nome do {x}º aluno(a): '))
+print(nomes)
