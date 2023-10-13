@@ -1,17 +1,23 @@
-class Poligono:
-    def __init__(self, paramSide, paramNumberOfSide, paramApothem):
-        self.Side = paramSide
-        self.NumberOfSide = paramNumberOfSide
-        self.Apothem = paramApothem
+from typing import Self
 
-    def calculatePerimeter(self):
+
+class Poligono:
+    def __init__(self, Side, NumberOfSide, Apothem):
+        self.Side = Side
+        self.NumberOfSide = NumberOfSide
+        self.Apothem = Apothem
+
+    def calcularPerimetro(self):
         perimeter = self.Side * self.NumberOfSide
         return perimeter
 
     def CalcularArea(self):
-        area = (self.calculatePerimeter() * self.Apothem) / 2
+        area = (self.calcularPerimetro() * self.Apothem) / 2
         return area
 
 
-triangulo = Poligono(5, 3, 5)
-print('A área do triângulo, é:', triangulo.CalcularArea())
+poligono_regular = Poligono(Side=float(input('Digite a medida dos lados: ')), 
+                     NumberOfSide=float(input('Digite o número de lados do polígono: ')), 
+                     Apothem=float(input('Digite a medida do raio: ')))
+
+print(f'A área do polígono, é:', poligono_regular.CalcularArea())
