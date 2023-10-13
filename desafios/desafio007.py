@@ -20,4 +20,4 @@ poligono_regular = Poligono(Side=float(input('Digite a medida dos lados: ')),
                             NumberOfSide=float(input('Digite o número de lados do polígono: ')), 
                             Apothem=float(input('Digite a medida do raio: ')))
 
-print(f'A área do polígono, é:', poligono_regular.CalcularArea())
+print(f'A área do polígono, é: ', poligono_regular.CalcularArea())
