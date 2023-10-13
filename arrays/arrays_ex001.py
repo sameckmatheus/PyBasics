@@ -1,6 +1,6 @@
 # Crie uma lista vazia e adicione 5 elementos a ela.
 
-lista_coisas = []
+lista_coisas = [0]*5
 
 elemento1 = input('digite algo: ')
 elemento2 = input('digite algo: ')
