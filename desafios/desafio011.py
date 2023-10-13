@@ -1,30 +1,43 @@
-# Crie um programa que simule o jogo da forca.
+name_art = (r"" "\n"
+            r"" "\n"
+            r" #######  #####   ######     ####     ###" "\n"
+            r"  ##   # ### ###   ##  ##   ##  ##   ## ##" "\n"
+            r"  ##     ##   ##   ##  ##  ##       ##   ##" "\n"
+            r"  ####   ##   ##   #####   ##       ##   ##" "\n"
+            r"  ##     ##   ##   ## ##   ##       #######" "\n"
+            r"  ##     ### ###   ## ##    ##  ##  ##   ##" "\n"
+            r" ####     #####   #### ##    ####   ##   ##" "\n"
+            r"" "\n")
 
-name_art = r'''
-
- #######  #####   ######     ####     ###
-  ##   # ### ###   ##  ##   ##  ##   ## ##
-  ##     ##   ##   ##  ##  ##       ##   ##
-  ####   ##   ##   #####   ##       ##   ##
-  ##     ##   ##   ## ##   ##       #######
-  ##     ### ###   ## ##    ##  ##  ##   ##
- ####     #####   #### ##    ####   ##   ##
-
-'''
 
 class Forca:
-    def __init__(self, palavra, limite):
-        self.palavra = palavra
-        self.limite = limite
+    def __init__(self, palavra_secreta):
+        self.palavra_secreta = palavra_secreta
+        self.erros = 0
+        self.acertos = 0
+        self.fim = False
+        self.letras_corretas = ["_"]
+        self.letras_erradas = []
 
-    def palavras(self):
-        palavra = input('Você deve escolher uma palavra para que os outrospossam adivinhar.\n'
+    def definir_palavra_secreta(self, palavra_secreta):
+        segredo = input('Você deve escolher uma palavra para que os outros possam adivinhar.\n'
                         'Digite a palavra que você escolheu: ')
-        ...
+        palavra_secreta = segredo
+        return palavra_secreta
 
-    def tentativas(self):
-        ...
+    def verificar_chute(self, palavra_secreta, update):
+        chute = input('Digite uma letra: ')
+        if chute == palavra_secreta:
+            return "Parabéns, você venceu!"
+        elif chute in self.letras_corretas:
+            return "Você já tentou essa letra antes!"
+        elif chute in palavra_secreta:
+            update(self.letras_corretas, chute)
+            self.acertos += 1
+        else:
+            update(self.letras_erradas, chute)
+            self.erros += 1
 
 
-forca = Forca()
+forca = Forca(palavra_secreta=1)
 print(name_art)
