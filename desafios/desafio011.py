@@ -1,105 +1,119 @@
-# Corrigir a formatação da arte do nome
-name_art = (r"" "\n"
-            r" #######  #####   ######     ####     ###" "\n"
-            r"  ##   # ### ###   ##  ##   ##  ##   ## ##" "\n"
-            r"  ##     ##   ##   ##  ##  ##       ##   ##" "\n"
-            r"  ####   ##   ##   #####   ##       ##   ##" "\n"
-            r"  ##     ##   ##   ## ##   ##       #######" "\n"
-            r"  ##     ### ###   ##  ##    ##  ##  ##   ##" "\n"  # Corrigir o espaçamento entre as letras
-            r" ####     #####   ######      ####   ##   ##" "\n"  # Corrigir os símbolos das letras
-            r"" "\n")
+import os
+
+name_art = (r"""
+    forca
+""")
+print(name_art)
 
 
 class Forca:
-    def __init__(self, palavra_secreta):
-        self.palavra_secreta = palavra_secreta
+    def __init__(self):
+        self.palavra_secreta = ""
         self.erros = 0
         self.acertos = 0
         self.fim = False
-        self.letras_corretas = ["_" for _ in palavra_secreta]
-        # Inicializar a lista com o mesmo tamanho da palavra secreta
+        self.letras_corretas = []
         self.letras_erradas = []
 
-    def definir_palavra_secreta(self):  # Remover o parâmetro palavra_secreta, pois ele não é usado
-        segredo = input('Você deve escolher uma palavra para que os outros possam adivinhar.\n'
-                        'Digite a palavra que você escolheu: ')
-        self.palavra_secreta = segredo  # Atribuir o valor do segredo ao atributo da classe
-        return self.palavra_secreta  # Retornar o atributo da classe
+    def definir_palavra_secreta(self):
+        os.system('clear' if os.name == 'posix' else 'cls')  # Limpa o terminal
+        print('Você deve escolher uma palavra para que os outros possam adivinhar.')
+        palavra_secreta = input('Digite a palavra que você escolheu: ')
+        os.system('clear' if os.name == 'posix' else 'cls')  # Limpa o terminal novamente após a entrada
 
-    def verificar_chute(self, update):
-        # Remover o parâmetro palavra_secreta, pois ele pode ser acessado pelo atributo da classe
-        chute = input('Digite uma letra: ')
-        if chute == self.palavra_secreta:  # Comparar o chute com o atributo da classe
-            return "Parabéns, você venceu!"
+        self.palavra_secreta = palavra_secreta.lower()
+        self.letras_corretas = ["_" for _ in self.palavra_secreta]
 
-        elif chute in self.letras_corretas or chute in self.letras_erradas:
-            # Verificar se o chute já foi feito antes em qualquer uma das listas
+    def verificar_chute(self, chutes):
+        if chutes in self.letras_corretas or chutes in self.letras_erradas:
             return "Você já tentou essa letra antes!"
 
-        elif chute in self.palavra_secreta:  # Comparar o chute com o atributo da classe
-            update(self.letras_corretas, chute)  # Atualizar a lista de letras corretas com o chute
-            self.acertos += len([letra for letra in self.palavra_secreta if
-                                 letra == chute])
-            # Aumentar os acertos de acordo com o número de vezes que a letra aparece na palavra secreta
+        elif chutes in self.palavra_secreta:
+            for i, letra in enumerate(self.palavra_secreta):
+                if letra == chutes:
+                    self.letras_corretas[i] = chutes
+                    self.acertos += 1
+            if self.acertos == len(self.palavra_secreta):
+                self.fim = True
+                return "Parabéns, você venceu!"
 
         else:
-            update(self.letras_erradas, chute)  # Atualizar a lista de letras erradas com o chute
+            self.letras_erradas.append(chutes)
             self.erros += 1
+            if self.erros >= 6:
+                self.fim = True
+                return "Infelizmente, você perdeu... a palavra era " + self.palavra_secreta
 
-    def draw_art(self):
-        if self.erros == 1:
-            return r"""+---+
-                        |   |
-                        O   |
-                            |
-                            |
-                            |
-                        ========="""
+        return None
+
+    def desenhar_forca(self):
+        if self.erros == 0:
+            return "Nenhum erro ainda."
+        elif self.erros == 1:
+            return r""" 
+                +---+
+                |   |
+                O   |
+                    |
+                    |
+                    |
+                    ========="""
         elif self.erros == 2:
-            return r"""+---+
-                        |   |
-                        O   |
-                        |   |
-                            |
-                            |
-                        ========="""
+            return r"""
+                +---+
+                |   |
+                O   |
+                |   |
+                    |
+                    |
+                    ========="""
         elif self.erros == 3:
-            return r"""+---+
-                        |   |
-                        O   |
-                        /|  |
-                            |
-                            |
-                        ========="""
+            return r"""
+                +---+
+                |   |
+                O   |
+               /|   |
+                    |
+                    |
+                    ========="""
         elif self.erros == 4:
-            return r"""+---+
-                        |   |
-                        O   |
-                        /|\ |
-                            |
-                            |
-                        ========="""
+            return r"""
+                +---+
+                |   |
+                O   |
+               /|\  |
+                    |
+                    |
+                    ========="""
         elif self.erros == 5:
-            return r"""+---+
-                        |   |
-                        O   |
-                        /|\ |
-                        /   |
-                            |
-                        ========="""
+            return r"""
+                +---+
+                |   |
+                O   |
+               /|\  |
+               /    |
+                    |
+                    ========="""
         elif self.erros == 6:
-            return r"""+---+
-                        |   |
-                        O   |
-                        /|\ |
-                        / \ |
-                            |
-                        ========="""
-        elif self.erros > 6:
-            return ("Infelizmente, você perdeu..."
-                    "a palavra era " + self.palavra_secreta)  # Concatenar a string com o atributo da classe
+            return r"""
+                +---+
+                |   |
+                O   |
+               /|\  |
+               / \  |
+                    |
+                    ========="""
 
 
-forca = Forca(palavra_secreta="")  # Inicializar a palavra secreta com uma string vazia
-forca.definir_palavra_secreta()  # Chamar o método para definir a palavra secreta
-print(name_art)
+forca = Forca()
+forca.definir_palavra_secreta()
+
+while not forca.fim:
+    print("Palavra: " + " ".join(forca.letras_corretas))
+    print("Letras erradas: " + ", ".join(forca.letras_erradas))
+    print(forca.desenhar_forca())
+    chute = input('Digite uma letra: ').lower()
+    resultado = forca.verificar_chute(chute)
+    if resultado:
+        print(resultado)
+        break
