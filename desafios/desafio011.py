@@ -29,14 +29,70 @@ class Forca:
         chute = input('Digite uma letra: ')
         if chute == palavra_secreta:
             return "Parabéns, você venceu!"
+        
         elif chute in self.letras_corretas:
             return "Você já tentou essa letra antes!"
+        
         elif chute in palavra_secreta:
             update(self.letras_corretas, chute)
             self.acertos += 1
+
         else:
             update(self.letras_erradas, chute)
             self.erros += 1
+
+    def draw_art(self):
+        if self.erros == 1:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                           ||
+                           ||
+                           ||
+                       ========="""
+        elif self.erros == 2:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                       |   ||
+                           ||
+                           ||
+                       ========="""
+        elif self.erros == 3:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                      /|   ||
+                           ||
+                           ||
+                       ========="""
+        elif self.erros == 4:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                      /|\  ||
+                           ||
+                           ||
+                       ========="""
+        elif self.erros == 5:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                      /|\  ||
+                      /    ||
+                           ||
+                       ========="""
+        elif self.erros == 6:
+            return r"""+---+
+                       |   ||
+                       O   ||
+                      /|\  ||
+                      / \  ||
+                           ||
+                       ========="""
+        elif self.erros > 6:
+            return ("Infelizmente, você perdeu..."
+                    "a palavra era ", self.palavra_secreta)
 
 
 forca = Forca(palavra_secreta=1)
