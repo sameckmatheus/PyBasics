@@ -1,7 +1,13 @@
-import os
+import string
 
 name_art = (r"""
-    forca
+ ######   #####   ######     ####     ###
+ ##      ##   ##  ###  ##   ##  ##   ## ##
+ ##      ##   ##  ##   ##  ##       ##   ##
+ #####   ##   ##  ##  ##   ##       ##   ##
+ ##      ##   ##  #####    ##       #######
+ ##      ##   ##  ## ###    ##  ##  ##   ##
+ ##       #####   ##  ###    ####   ##   ##
 """)
 print(name_art)
 
@@ -16,15 +22,15 @@ class Forca:
         self.letras_erradas = []
 
     def definir_palavra_secreta(self):
-        os.system('clear' if os.name == 'posix' else 'cls')  # Limpa o terminal
-        print('Você deve escolher uma palavra para que os outros possam adivinhar.')
-        palavra_secreta = input('Digite a palavra que você escolheu: ')
-        os.system('clear' if os.name == 'posix' else 'cls')  # Limpa o terminal novamente após a entrada
-
+        print('Bem-vindo ao Jogo da Forca!')
+        palavra_secreta = 'python'
         self.palavra_secreta = palavra_secreta.lower()
         self.letras_corretas = ["_" for _ in self.palavra_secreta]
 
     def verificar_chute(self, chutes):
+        if chutes not in string.ascii_lowercase or len(chutes) != 1:
+            return "Por favor, digite apenas uma letra válida."
+
         if chutes in self.letras_corretas or chutes in self.letras_erradas:
             return "Você já tentou essa letra antes!"
 
@@ -47,62 +53,7 @@ class Forca:
         return None
 
     def desenhar_forca(self):
-        if self.erros == 0:
-            return "Nenhum erro ainda."
-        elif self.erros == 1:
-            return r""" 
-                +---+
-                |   |
-                O   |
-                    |
-                    |
-                    |
-                    ========="""
-        elif self.erros == 2:
-            return r"""
-                +---+
-                |   |
-                O   |
-                |   |
-                    |
-                    |
-                    ========="""
-        elif self.erros == 3:
-            return r"""
-                +---+
-                |   |
-                O   |
-               /|   |
-                    |
-                    |
-                    ========="""
-        elif self.erros == 4:
-            return r"""
-                +---+
-                |   |
-                O   |
-               /|\  |
-                    |
-                    |
-                    ========="""
-        elif self.erros == 5:
-            return r"""
-                +---+
-                |   |
-                O   |
-               /|\  |
-               /    |
-                    |
-                    ========="""
-        elif self.erros == 6:
-            return r"""
-                +---+
-                |   |
-                O   |
-               /|\  |
-               / \  |
-                    |
-                    ========="""
+        pass
 
 
 forca = Forca()
@@ -117,3 +68,4 @@ while not forca.fim:
     if resultado:
         print(resultado)
         break
+
