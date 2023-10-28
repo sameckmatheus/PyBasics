@@ -41,7 +41,7 @@ class SoldadoElite(NPC):
         super().__init__(nome, grupamento, self.resistencia, self.ataque)
 
 
-npc_1 = Guarda('SnakeEyes', str('Thunderbolt-9'))
+npc_1 = Guarda('SnakeEyes',  str('Thunderbolt-9'))
 npc_1.informacoes()
 
 npc_2 = Soldado('IronHands', str('Thunderbolt-9'))
