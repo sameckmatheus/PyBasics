@@ -22,7 +22,7 @@ class ContaBancaria:
             else:
                 print(f'Saldo para saque de R$ {valor:.2f} insuficiente.')
         else:
-            print(f'Não foi possível realizar o depósito, pois a conta: {self.numero} parece estar inavtiva...')
+            print(f'Não foi possível realizar o saque, pois a conta: {self.numero} parece estar inavtiva...')
 
     def ativar_conta(self):
         if not self.status:
@@ -35,8 +35,22 @@ class ContaBancaria:
             print(f'Não possível verificar o saldo da conta: {self.numero}, pois, a mesma está inativa.')
 
 
-Conta1 = ContaBancaria(1234, 5000, "Roberto", True, "Corrente", 5000)
+Conta1 = ContaBancaria(1729, 5000, "Roberto", True, "Corrente", 5000)
 Conta1.depositar(8000)
-Conta1.sacar(200)
+Conta1.sacar(5300)
 Conta1.ativar_conta()
-Conta1.verificar_saldo()
+print(Conta1.verificar_saldo())
+print()
+
+Conta2 = ContaBancaria(9898, 5000, "João", True, "Corrente", 7000)
+Conta2.depositar(3500)
+Conta2.sacar(200)
+Conta2.ativar_conta()
+print(Conta2.verificar_saldo())
+print()
+
+Conta3 = ContaBancaria(6699, 5000, "Maria", False, "Corrente", 4000)
+Conta3.depositar(600)
+Conta3.sacar(100)
+Conta3.ativar_conta()
+print(Conta3.verificar_saldo())
