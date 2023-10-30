@@ -14,9 +14,9 @@ class ContaBancaria:
         if self.status:
             self.saldo += valor
             horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-            print(f'*********************************************************************************\n'
+            print(f'***********************************************************************************\n'
                   f'Depósito de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
-                  f'Horário da transação: {horario_transacao}\n')
+                  f'Horário do depósito: {horario_transacao}\n')
         else:
             print(f'Não foi possível realizar o depósito, pois a conta: {self.numero} parece estar inavtiva...')
 
@@ -26,7 +26,7 @@ class ContaBancaria:
                 self.saldo -= valor
                 horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
                 print(f'Saque de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
-                      f'Horário da transação: {horario_transacao}')
+                      f'Horário do saque: {horario_transacao}')
             else:
                 print(f'Saldo para saque de R$ {valor:.2f} insuficiente.')
         else:
@@ -39,7 +39,7 @@ class ContaBancaria:
     def verificar_saldo(self):
         if self.status:
             return (f'\nO seu saldo atual, é: R$ {self.saldo:.2f}\n'
-                    f'******************************************************************************')
+                    f'***********************************************************************************')
         else:
             print(f'Não possível verificar o saldo da conta: {self.numero}, pois, a mesma está inativa.')
 
