@@ -2,66 +2,60 @@ from datetime import datetime
 
 
 class ContaBancaria:
-    def __init__(self, numero, saldo, nome, status, tipo, limite):
+    def __init__(self, numero, nome, tipo):
         self.numero = numero
-        self.saldo = saldo
-        self.status = status
+        self.saldo = 0
+        self.status = False
         self.tipo = tipo
-        self.limite = limite
+        self.limite = 0
         self.nome = nome
 
     def depositar(self, valor):
         if self.status:
             self.saldo += valor
             horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-            print(f'***********************************************************************************\n'
-                  f'Depósito de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
-                  f'Horário do depósito: {horario_transacao}\n')
+            return (f'====================================================================================\n'
+                    f'Depósito de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
+                    f'Horário do depósito: {horario_transacao}\n')
         else:
-            print(f'Não foi possível realizar o depósito, pois a conta: {self.numero} parece estar inavtiva...')
+            return f'Não foi possível realizar o depósito, pois a conta: {self.numero} parece estar inavtiva...'
 
     def sacar(self, valor):
         if self.status:
             if self.saldo >= valor:
                 self.saldo -= valor
                 horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-                print(f'Saque de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
-                      f'Horário do saque: {horario_transacao}')
+                return (f'Saque de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
+                        f'Horário do saque: {horario_transacao}')
+
+            elif valor > self.saldo:
+                saque = (self.saldo + self.limite) - valor
+                horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+                return (f'Saque de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
+                        f'Horário do saque: {horario_transacao}')
+
             else:
-                print(f'Saldo para saque de R$ {valor:.2f} insuficiente.')
+                return f'Saldo para saque de R$ {valor:.2f} insuficiente.'
         else:
-            print(f'Não foi possível realizar o saque, pois a conta: {self.numero} parece estar inavtiva...')
+            return f'Não foi possível realizar o saque, pois a conta: {self.numero} parece estar inavtiva...'
 
     def ativar_conta(self):
         if not self.status:
             self.status = True
+            return f'Atenção, sua conta está avita!'
+
+    def ativar_limite(self):
+        if self.limite == 0:
+            if self.status:
+                self.limite = 1000
+                return (f'\nParabéns, você foi contemplado!\n'
+                        f'seu novo limite de conta, é: {self.limite}')
+            else:
+                return 'Você ainda não tem um limite de conta...'
 
     def verificar_saldo(self):
         if self.status:
             return (f'\nO seu saldo atual, é: R$ {self.saldo:.2f}\n'
-                    f'***********************************************************************************')
+                    f'====================================================================================')
         else:
-            print(f'Não possível verificar o saldo da conta: {self.numero}, pois, a mesma está inativa.')
-
-
-"""
-Conta1 = ContaBancaria(1729, 5000, "Roberto", True, "Corrente", 5000)
-Conta1.depositar(8000)
-Conta1.sacar(5300)
-Conta1.ativar_conta()
-print(Conta1.verificar_saldo())
-print()
-
-Conta2 = ContaBancaria(9898, 5000, "João", True, "Corrente", 7000)
-Conta2.depositar(3500)
-Conta2.sacar(200)
-Conta2.ativar_conta()
-print(Conta2.verificar_saldo())
-print()
-
-Conta3 = ContaBancaria(6699, 5000, "Maria", False, "Corrente", 4000)
-Conta3.depositar(600)
-Conta3.sacar(100)
-Conta3.ativar_conta()
-print(Conta3.verificar_saldo())
-"""
+            return f'Não possível verificar o saldo da conta: {self.numero}, pois, a mesma está inativa.'
