@@ -12,7 +12,7 @@ class NPC:
               f'Grupamento...: {self.grupamento}\n'
               f'Resistência..: {self.resistencia}\n'
               f'Ataque.......: {self.ataque}\n'
-              f'Vivo.........: {'Sim' if self.vivo else "Não"}\n'  # operador ternário
+              f'Vivo.........: {"Sim" if {self.vivo} else "Não"}\n'
               f'Energia......: {self.energia}\n'
               f'*******************************')
 
