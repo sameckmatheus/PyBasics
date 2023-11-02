@@ -8,26 +8,35 @@ class ContaBancaria:
         self.status = False
         self.tipo = tipo
         self.nome = nome
+        self.limite_conta = LimiteConta(tipo)
 
     def depositar(self, valor):
         if self.status:
-            self.saldo += valor
+            limite_disponivel = self.limite_conta.definir_limite_padrao() - self.limite_conta.limite
+            if valor > limite_disponivel:
+                self.limite_conta.limite += limite_disponivel
+                self.saldo += (valor - limite_disponivel)
+            else:
+                self.limite_conta.limite += valor
             horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-            return (f'====================================================================================\n'
-                    f'Depósito de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
+            return (f'Depósito de R$ {valor:.2f} foi realizado com sucesso para a conta de número: {self.numero}. \n'
                     f'Horário do depósito: {horario_transacao}\n')
         else:
             return f'Não foi possível realizar o depósito, pois a conta: {self.numero} parece estar inativa...'
 
     def sacar(self, valor):
         if self.status:
-            if self.verificar_saldo_suficiente(valor):
-                self.saldo -= valor
-                horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-                return (f'Saque de R$ {valor:.2f} foi realizado com sucesso para a conta: {self.numero}. \n'
-                        f'Horário do saque: {horario_transacao}')
+            if valor > self.saldo:
+                if valor <= self.saldo + self.limite_conta.limite:
+                    self.limite_conta.limite -= (valor - self.saldo)
+                    self.saldo = 0
+                else:
+                    return SaldoInsuficienteError(f'Saldo para saque de R$ {valor:.2f} insuficiente.')
             else:
-                raise SaldoInsuficienteError(f'Saldo para saque de R$ {valor:.2f} insuficiente.')
+                self.saldo -= valor
+            horario_transacao = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+            return (f'Saque de R$ {valor:.2f} foi realizado com sucesso da conta de número: {self.numero}. \n'
+                    f'Horário do saque: {horario_transacao}')
         else:
             return f'Não foi possível realizar o saque, pois a conta: {self.numero} parece estar inativa...'
 
