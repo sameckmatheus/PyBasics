@@ -31,7 +31,7 @@ class Coelho(Animal):
         super().__init__(nome, cor)
 
     def emitir_som(self):
-        print(f'Coelho {self.nome} está ronronando.')
+        print(f'Coelho {self.nome} está ronrronando.')
 
 
 class Vaca(Animal):
