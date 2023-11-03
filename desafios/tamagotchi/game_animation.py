@@ -1,3 +1,4 @@
+from moviepy.editor import VideoFileClip
 import pygame
 import sys
 
@@ -7,28 +8,31 @@ largura_tela, altura_tela = 800, 600
 tela = pygame.display.set_mode((largura_tela, altura_tela))
 pygame.display.set_caption('Tamagotchi')
 
-frames = []
-for i in range(1, 9):
-    frame = pygame.image.load(f'assets/frames/frame{i}.png')
-    frames.append(frame)
+caminho_gif = 'assets/animacao.gif'
 
-indice_frame = 0
-FPS = 20
+clip = VideoFileClip(caminho_gif, audio=False)
+clip.preview(fps=30)
+
 relogio = pygame.time.Clock()
 
-def animar_tamagotchi(tela):
+
+def animar_tamagotchi():
     while True:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-        indice_frame = (indice_frame + 1) % len(frames)
+        frame = clip.get_frame(tela.get_time() / 1000)
+
+        frame_surface = pygame.image.fromstring(frame.tobytes(), clip.size, clip.size, 'RGB')
 
         tela.fill((255, 255, 255))
-        tela.blit(frames[indice_frame], (largura_tela // 2 - frames[indice_frame].get_width() // 2,
-                                         altura_tela // 2 - frames[indice_frame].get_height() // 2))
+        tela.blit(frame_surface, (largura_tela // 2 - clip.size[0] // 2, altura_tela // 2 - clip.size[1] // 2))
 
         pygame.display.flip()
 
-        relogio.tick(FPS)
+        relogio.tick(30)
+
+
+animar_tamagotchi()
