@@ -17,9 +17,10 @@ class Tamagotchi:
 
 def interagir_com_usuario(tamagotchi):
     while True:
-        print(f'\n{tamagotchi.nome} - Fome: {tamagotchi.fome}, '
-              f'Felicidade: {tamagotchi.felicidade}, '
-              f'Energia: {tamagotchi.energia}')
+        print(f'Tamagotchi - {tamagotchi.nome}:\n'
+              f'Fome: {tamagotchi.fome}\n'
+              f'Felicidade: {tamagotchi.felicidade}\n'
+              f'Energia: {tamagotchi.energia}\n')
         print("O que você quer fazer?")
         print("1. Alimentar")
         print("2. Brincar")
