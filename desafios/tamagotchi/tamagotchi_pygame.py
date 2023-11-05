@@ -9,10 +9,8 @@ tela = pygame.display.set_mode((largura_tela, altura_tela))
 pygame.display.set_caption('Meu Tamagotchi')
 
 animacao_gif = pygame.image.load('assets/duck.gif')
-
 largura_nova, altura_nova = 400, 400
 animacao_gif = pygame.transform.scale(animacao_gif, (largura_nova, altura_nova))
-
 animacao_rect = animacao_gif.get_rect(center=(largura_tela // 1.6, altura_tela // 1.7))
 
 cor_fundo = (61, 235, 158)
@@ -69,10 +67,13 @@ while True:
 
     user_op1 = fonte.render(opcao1, True, (17, 87, 62))
     tela.blit(user_op1, (20, 70))
+
     user_op2 = fonte.render(opcao2, True, (17, 87, 62))
     tela.blit(user_op2, (20, 100))
+
     user_op3 = fonte.render(opcao3, True, (17, 87, 62))
     tela.blit(user_op3, (20, 130))
+
     user_op4 = fonte.render(opcao4, True, (17, 87, 62))
     tela.blit(user_op4, (20, 160))
 
