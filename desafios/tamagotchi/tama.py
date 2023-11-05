@@ -61,4 +61,4 @@ while True:
             sys.exit()
 
     # Chama a função de animação
-    animar_tamagotchi(tela)
+    animar_tamagotchi()

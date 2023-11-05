@@ -1,48 +1,41 @@
-from moviepy.editor import VideoFileClip
 import pygame
+from moviepy.editor import VideoFileClip
 import sys
 
 pygame.init()
 
-# Configurações da tela
 largura_tela, altura_tela = 800, 600
-tela_pygame = pygame.display.set_mode((largura_tela, altura_tela))
+tela = pygame.display.set_mode((largura_tela, altura_tela))
 pygame.display.set_caption('Tamagotchi')
 
-# Caminho para o arquivo GIF
 caminho_gif = 'assets/animacao.gif'
 
-# Carregando o GIF usando o MoviePy
 clip = VideoFileClip(caminho_gif, audio=False)
-clip.preview(fps=30)  # Pré-visualiza o GIF para determinar as dimensões
-
-# Configurações da animação
 relogio = pygame.time.Clock()
 
 
-def animar_tamagotchi(tela):
-    while True:
+def animar_tamagotchi():
+    rodando = True
+    while rodando:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                rodando = False
 
-        # Obtém um frame do GIF
-        frame = clip.get_frame(tela.get_time() / 10000)
+        tempo_entre_frames = 1000 / 60
 
-        # Converte o frame para o formato Pygame Surface
-        frame_surface = pygame.image.fromstring(frame.tobytes(), clip.size, clip.size, 'RGB')
+        frame = clip.get_frame(tela.get_time() / 1000)
 
-        # Desenha o frame na tela
-        tela.fill((255, 255, 255))  # Fundo branco
+        frame_surface = pygame.image.fromstring(frame.tobytes(), clip.size, 'RGB')
+
+        tela.fill((255, 255, 255))
         tela.blit(frame_surface, (largura_tela // 2 - clip.size[0] // 2, altura_tela // 2 - clip.size[1] // 2))
 
-        # Atualiza a tela
         pygame.display.flip()
 
-        # Limita a taxa de quadros por segundo (FPS)
-        relogio.tick(30)
+        relogio.tick_busy_loop(60)
+
+    pygame.quit()
+    sys.exit()
 
 
-# Chama a função de animação
-animar_tamagotchi(tela_pygame)
+animar_tamagotchi()
