@@ -15,8 +15,8 @@ animacao_gif = pygame.transform.scale(animacao_gif, (largura_nova, altura_nova))
 
 animacao_rect = animacao_gif.get_rect(center=(largura_tela // 1.6, altura_tela // 1.7))
 
-cor_fundo = (255, 255, 255)
-fonte = pygame.font.Font(None, 20)
+cor_fundo = (61, 235, 158)
+fonte = pygame.font.Font(None, 26)
 fome = 50
 felicidade = 50
 energia = 50
@@ -61,20 +61,20 @@ while True:
     tela.fill(cor_fundo)
     tela.blit(animacao_gif, animacao_rect)
 
-    bv = fonte.render(boas_vindas, True, (0, 0, 0))
+    bv = fonte.render(boas_vindas, True, (17, 87, 62))
     tela.blit(bv, (20, 10))
 
-    texto = fonte.render(mensagem, True, (0, 0, 0))
+    texto = fonte.render(mensagem, True, (17, 87, 62))
     tela.blit(texto, (20, 40))
 
-    user_op1 = fonte.render(opcao1, True, (0, 0, 0))
+    user_op1 = fonte.render(opcao1, True, (17, 87, 62))
     tela.blit(user_op1, (20, 70))
-    user_op2 = fonte.render(opcao2, True, (0, 0, 0))
-    tela.blit(user_op2, (20, 90))
-    user_op3 = fonte.render(opcao3, True, (0, 0, 0))
-    tela.blit(user_op3, (20, 110))
-    user_op4 = fonte.render(opcao4, True, (0, 0, 0))
-    tela.blit(user_op4, (20, 130))
+    user_op2 = fonte.render(opcao2, True, (17, 87, 62))
+    tela.blit(user_op2, (20, 100))
+    user_op3 = fonte.render(opcao3, True, (17, 87, 62))
+    tela.blit(user_op3, (20, 130))
+    user_op4 = fonte.render(opcao4, True, (17, 87, 62))
+    tela.blit(user_op4, (20, 160))
 
     pygame.display.flip()
     pygame.time.Clock().tick(60)
